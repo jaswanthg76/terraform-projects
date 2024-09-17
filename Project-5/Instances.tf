@@ -17,7 +17,7 @@ resource "aws_instance" "VerneMQ" {
   instance_type   = "t2.micro"
   subnet_id       = aws_subnet.subnet-1.id
   security_groups = [aws_security_group.VerneMQ-group.id]
-  key_name        = "EC2First"
+  key_name        = "key_pair"
   user_data       = <<-EOF
                 #!/bin/bash
                 # Update the package list
@@ -91,8 +91,8 @@ resource "aws_instance" "grafana" {
   ami             = "ami-0f58b397bc5c1f2e8"
   instance_type   = "t2.micro"
   subnet_id       = aws_subnet.subnet-2.id
-  security_groups = [aws_security_group.grafana-group.i]
-  key_name        = "EC2First"
+  security_groups = [aws_security_group.grafana-group.id]
+  key_name        = "key_pair"
   user_data       = <<-EOF
                 #!/bin/bash
                 # Update the package list

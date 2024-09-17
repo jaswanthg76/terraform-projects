@@ -26,7 +26,7 @@ resource "aws_lambda_function" "secretManager-RDS-lamdba" {
 }
 
 resource "aws_iam_role" "lambda-1-role" {
-  name        = "example_lambda_exec_role"
+  name        = "example_lambda_exec_role1"
   description = "Execution role for the lambda function"
 
   assume_role_policy = <<EOF
@@ -311,7 +311,7 @@ resource "aws_lambda_permission" "API-gateway-invoke-permission" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.Api-invoke-lamdba.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_apigatewayv2_api.test.execution_arn}/*/*"
+  source_arn    = "${aws_apigatewayv2_api.main.execution_arn}/*/*"
 }
 
 
